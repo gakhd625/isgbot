@@ -122,11 +122,7 @@ export class TelegramService {
   private areaHeader(area: string, time: string) {
     const normalized = area.toLowerCase();
     const label =
-      normalized.includes("island central") || no
-      
-      
-      
-      rmalized === "icm"
+      normalized.includes("island central") || normalized === "icm"
         ? "ICM"
         : normalized.includes("sm city")
           ? "SM CITY"
