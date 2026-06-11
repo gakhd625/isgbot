@@ -1,0 +1,15 @@
+import { LoginForm } from "@/features/auth/login-form";
+
+export default async function LoginPage({
+  searchParams
+}: {
+  searchParams: Promise<{ next?: string; error?: string }>;
+}) {
+  const params = await searchParams;
+
+  return (
+    <main className="flex min-h-screen items-center justify-center p-4">
+      <LoginForm next={params.next ?? "/dashboard"} error={params.error} />
+    </main>
+  );
+}
