@@ -6,7 +6,10 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function absoluteUrl(path: string) {
-  const base = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  const vercelHost = process.env.VERCEL_PROJECT_PRODUCTION_URL ?? process.env.VERCEL_URL;
+  const base =
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    (vercelHost ? `https://${vercelHost}` : "https://isgbot.vercel.app");
   return `${base.replace(/\/$/, "")}${path}`;
 }
 
