@@ -64,6 +64,13 @@ export async function POST(request: Request) {
   }
 
   const message = update.message;
+  const messageText = message?.text?.trim();
+
+  if (message && messageText?.toLowerCase() === "/chatid") {
+    await telegram.sendChatMessage(message.chat.id, `Chat ID: ${message.chat.id}`);
+    return NextResponse.json({ ok: true });
+  }
+
   const textCommand = telegram.parseTextStatusCommand(message?.text);
   if (!textCommand) {
     return NextResponse.json({ ok: true });
